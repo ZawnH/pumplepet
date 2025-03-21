@@ -40,3 +40,8 @@ temp/
 
 # Next.js cache (https://nextjs.org/docs/app/building-your-application/optimizing/caching#disabling-caching)
 .next/cache/
+
+# Cursor rules
+.cursorrules
+.cursor
+.cursorignore

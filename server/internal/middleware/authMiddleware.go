@@ -8,6 +8,8 @@ import (
 	"strings"
 	"time"
 
+	"pumplepet-server/pkg/util"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
@@ -15,6 +17,11 @@ import (
 func ValidateToken(tokenString string) (uint, error) {
 	// Remove "Bearer " prefix if present
 	tokenString = strings.TrimPrefix(tokenString, "Bearer ")
+
+	// Check if token is blacklisted
+	if util.GetTokenBlacklist().IsBlacklisted(tokenString) {
+		return 0, errors.New("token has been revoked")
+	}
 
 	// Parse the token
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -69,6 +76,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		// Set user ID in context
 		c.Set("user_id", userID)
+		c.Set("token", token)
 		c.Next()
 	}
 }
