@@ -1,5 +1,10 @@
 # Environment variables
 .env
+**/.env
+**/.env.local
+**/.env.development
+**/.env.test
+**/.env.production
 
 # OS files
 .DS_Store
@@ -24,3 +29,14 @@
 # Temporary files
 tmp/
 temp/
+
+# Node modules
+**/node_modules/
+**/node_modules/**
+
+# Next.js build output
+.next/
+*.next/
+
+# Next.js cache (https://nextjs.org/docs/app/building-your-application/optimizing/caching#disabling-caching)
+.next/cache/
