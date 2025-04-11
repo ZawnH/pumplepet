@@ -40,3 +40,5 @@ temp/
 
 # Next.js cache (https://nextjs.org/docs/app/building-your-application/optimizing/caching#disabling-caching)
 .next/cache/
+
+pet_adoption_data.csv

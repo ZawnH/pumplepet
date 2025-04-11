@@ -1,8 +1,10 @@
 package routes
 
 import (
-    "pumplepet-server/internal/controller/auth"
-    "github.com/gin-gonic/gin"
+	"pumplepet-server/internal/controller/auth"
+	"pumplepet-server/internal/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
 func AuthRoutes(router *gin.Engine) {
@@ -10,5 +12,6 @@ func AuthRoutes(router *gin.Engine) {
     {
         authRoutes.POST("/register", auth.Register)
         authRoutes.POST("/login", auth.Login)
+        authRoutes.POST("/logout", middleware.AuthMiddleware(), auth.Logout)
     }
 }
